@@ -1,0 +1,2 @@
+# 系统温度桌面警告
+* * * * * bash /home/alic/tutorial/Github/Linux_env/shell/os/monitor/temcheck.sh run

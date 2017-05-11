@@ -5,7 +5,7 @@
 
 # 安装 func
 function i(){
-    sudo apt-get install lm-sensors -y && sudo modprobe coretemp
+    sudo apt-get install apt-get install lm-sensors && sudo modprobe coretemp
 }
 
 # 运行 func
