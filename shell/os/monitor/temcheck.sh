@@ -12,7 +12,7 @@ function i(){
 function todo(){
     str=`sensors |awk '{print $2}'| sed -n '3p'`
     tem=${str:1:2}
-    if [ $tem -gt 90 ]
+    if [ $tem -gt 50 ]
     then
     notify-send -i dialog-warning "系统温度提醒" "$(whoami) 你的电脑温度过高 \n Quickly To Kill Your Bad Process"
     fi 
@@ -26,7 +26,7 @@ function run(){
 }
 # 帮助 func
 function h(){
-    echo echo "Usage: $0 (install|todo|help)"
+    echo echo "Usage: $0 ( i | run | h )"
 }
 
 # main to start
@@ -34,7 +34,7 @@ case $1 in
     i)
         i
         ;;
-    todo)
+    run)
         run
         ;;
     *)
