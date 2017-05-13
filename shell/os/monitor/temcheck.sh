@@ -8,7 +8,7 @@ warningTem=80
 
 # 安装 func
 function i(){
-    sudo apt-get install lm-sensors -y && sudo modprobe coretemp
+    sudo apt-get install lm-sensors beep -y && sudo modprobe coretemp && sudo modprobe pcspkr
 }
 
 # 运行 func
@@ -20,6 +20,8 @@ function todo(){
     # 解决crontab中的notify-send 不能显示通知的处理方法 next line
     export DISPLAY=:0.0 && \
     notify-send -i dialog-warning "系统温度提醒" "$(whoami) 你的电脑温度过高 ↦ $warningTem°C \n Quickly To Kill Your Bad Process"
+    # 还看不到？ 声音警告    
+    beep -r 4 &
     fi 
 }
 # 为了定时方便，程序执行一分钟 func
