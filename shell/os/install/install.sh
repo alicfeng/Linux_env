@@ -480,7 +480,6 @@ function main(){
     # 完成通知
     clear && about && open
   fi
-   exit 0
 }
 
 # 显示任务生在执行
