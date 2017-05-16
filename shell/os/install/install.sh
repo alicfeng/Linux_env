@@ -475,7 +475,7 @@ function main(){
     # 清理修复软件
     if [[ $GUI == *"清理修复软件"* ]]
     then
-      clear && sudo apt-get install -t && sudo apt-get autoremove && sudo apt-get  autoclean && showResultTip "清理修复软件"
+      clear && sudo apt-get install -y && sudo apt-get autoremove && sudo apt-get  autoclean && showResultTip "清理修复软件"
     fi
     
     # 完成通知
