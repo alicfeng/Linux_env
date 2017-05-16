@@ -1,0 +1,5 @@
+# 挂载华硕的home目录
+sshfs -o ssh_command='sshpass -p fenglican ssh' alic@172.16.168.1:/home/alic /home/alic/mount/172.16.168.1/home
+
+# 挂载500g硬盘
+sshfs -o ssh_command='sshpass -p fenglican ssh' alic@172.16.168.1:/media/alic/asus /home/alic/mount/172.16.168.1/asus

@@ -1,30 +1,73 @@
 #!/bin/bash
-# AlicFeng alic@samego.com 价值源于技术，技术源于分享
+# AlicFeng https://www.samego.com alic@samego.com 价值源于技术，技术源于分享
+# build date 2017.05.16
+# last modified date 2017.05.16
 
 # mian func 构建图形化界面
 function main(){
   GUI=$(zenity --list --checklist \
-    --height="600" \
-    --width="1000" \
+    --height="700" \
+    --width="1100" \
     --title="Elementary OS 快速配置工具" \
     --text="请从下面列表中选择需要设置或安装的项目" \
-    --column="选择" --column="操作"	--column="描述" \
-    TRUE "更新系统源列表" "更新系统源列表清单"  \
-    FALSE "Google Chrome浏览器" "Google公司开发的免费网页浏览器"  \
-    FALSE "Firefox浏览器" "即火狐浏览器，一个安全高效且体积小的浏览器，它具有速度快、隐私保护、不同设备之间同步数据、个性化定制等特性"  \
-    FALSE "Gparted" "GParted是一个分区工具，它可以用于创建、删除、移动分区，调整分区大小，检查、复制分区等操作"  \
-    FALSE "FileZilla" "FileZilla是一个免费开源的FTP软件，分为客户端版本和服务器版本，具备所有的FTP软件功能"  \
-    FALSE "WPS" "WPS是由金山软件股份有限公司自主研发的一款办公软件套装，可以实现办公软件最常用的文字、表格、演示等多种功能"  \
-    FALSE "有道翻译" "有道词典是由网易有道出品的全球首款基于搜索引擎技术的全能免费语言翻译软件，为全年龄段学习人群提供优质顺畅的查词翻译服务"  \
-    FALSE "网易云音乐" "网易云音乐是一款专注于发现与分享的音乐产品,依托专业音乐人、DJ、好友推荐及社交功能,为用户打造全新的音乐生活"  \
-    FALSE "VLC" "VLC是一款自由、开源的跨平台多媒体播放器及框架，可播放大多数多媒体文件，以及 DVD、音频 CD、VCD 及各类流媒体协议"  \
-    FALSE "Kazam" "Kazam 是 Ubuntu 上一款简易的桌面屏幕录制工具，它只能录制整个屏幕，可以录制声音"  \
-    FALSE "Smplayer" "Smplayer是一款开源的跨平台软件，其在Linux、Windows系统中有重要地位，影音播放能力很强大"  \
-    FALSE "Silentcast" "Silentcast是一款专注于GIF录制工具"  \
-    FALSE "媒体解码框架" "附带暗转媒体解码框架"  \
-    FALSE "Audience" "Audience是一款简洁而强大的视频播放器，怎么说呢：简洁到不能再简洁。它是ElementaryOS系统默认的视频播放器"  \
-    FALSE "Gimp" "Gimp是一个图片编辑器，优雅地取代windows、mac下的另一个ps软件"  \
-    TRUE "清理修复软件" "清理无用的软件安装包以及依赖，修复不能运行的软件"  \
+    --column="选择"   --column="工具名称"   --column="工具描述" \
+    TRUE              "更新系统源列表"      "更新系统源列表清单"  \
+    FALSE             "Google Chrome"     "Google公司开发的免费网页浏览器，十分推荐"  \
+    FALSE             "Firefox"           "即火狐浏览器，一个安全高效且体积小的浏览器，它具有速度快、隐私保护、不同设备之间同步数据、个性化定制等特性"  \
+    FALSE             "Gparted"           "GParted是一个分区工具，它可以用于创建、删除、移动分区，调整分区大小，检查、复制分区等操作"  \
+    FALSE             "FileZilla"         "FileZilla是一个免费开源的FTP软件，分为客户端版本和服务器版本，具备所有的FTP软件功能"  \
+    FALSE             "WPS"               "WPS是由金山软件股份有限公司自主研发的一款办公软件套装，可以实现办公软件最常用的文字、表格、演示等多种功能"  \
+    FALSE             "有道翻译"           "有道词典是由网易有道出品的全球首款基于搜索引擎技术的全能免费语言翻译软件，为全年龄段学习人群提供优质顺畅的查词翻译服务"  \
+    FALSE             "网易云音乐"          "网易云音乐是一款专注于发现与分享的音乐产品,依托专业音乐人、DJ、好友推荐及社交功能,为用户打造全新的音乐生活"  \
+    FALSE             "VLC"               "VLC是一款自由、开源的跨平台多媒体播放器及框架，可播放大多数多媒体文件，以及 DVD、音频 CD、VCD 及各类流媒体协议"  \
+    FALSE             "Kazam"             "Kazam 是 Ubuntu 上一款简易的桌面屏幕录制工具，它只能录制整个屏幕，可以录制声音"  \
+    FALSE             "Smplayer"          "Smplayer是一款开源的跨平台软件，其在Linux、Windows系统中有重要地位，影音播放能力很强大"  \
+    FALSE             "Silentcast"        "Silentcast是一款专注于GIF录制工具"  \
+    FALSE             "媒体解码框架"        "附带暗转媒体解码框架,完善PC、建议安装"  \
+    FALSE             "Audience"          "Audience是一款简洁而强大的视频播放器，怎么说呢：简洁到不能再简洁。它是ElementaryOS系统默认的视频播放器"  \
+    FALSE             "Gimp"              "Gimp是一个图片编辑器，优雅地取代windows、mac下的另一个ps软件"  \
+    FALSE             "gedit"             "gedit是一个基于GNOME桌面环境下兼容UTF-8的文本编辑器" \
+    FALSE             "x11vnc"            "x11vnc是一种位图显示的视窗系统 。x11vnc服务端可以实现Windows远程Linux桌面系统" \
+    FALSE             "Shadowsocks-qt5"   "Shadowsocks-qt5是一个科学上网利器工具。" \
+    FALSE             "VirtualBox"        "VirtualBox是一款由德国 Innotek 公司开发的开源虚拟机软件。它不仅具有丰富的特色以及轻量级的体积，而且性能也很优异" \
+    FALSE             "Steam"             "Steam是一个整合游戏下载平台，Linuxer游戏者嗨翻天" \
+    FALSE             "electronic-wechat" "electronic-wechat是一个基于nodeJS开发的Linux系统微信。前提已经安装nodeJS、npm" \
+    FALSE             "Transmission"      "Transmission 是一个 BitTorrent 客户端软件，它支持速度限制、制作种子、远程控制、磁力链接、数据加密、损坏修复、数据来源交换等功能" \
+    FALSE             "thunderbird"       "thunderbird是又是一个简洁易用的邮箱客户端" \
+    FALSE             "Okular"            "Okular 是一个 PDF 文档阅读软件，支持 PDF、TIFF、CHM、ODF、EPUB、mobi 等文档格式" \
+    FALSE             "FocusWriter"       "FocusWriter 是一款写作软件" \
+    FALSE             "Typora"            "Typora是极简的Markdown编辑器，合并了写作和预览。支持表格、代码编辑，拖拽插图等，非常好用；推荐安装" \
+    FALSE             "OBS Studio"        "OBS Studio 是一款跨平台的，开源的视频录制和在线直播客户端软件。我觉得一点不好的体验就是不能刻录整个屏幕" \
+    FALSE             "Remmina"           "Remmina是一个用远程桌面软件，提供了RDP、VNC、XDMCP、SSH等远程连接协议的支持，远程客户端推荐" \
+    FALSE             "Meld"              "Meld是针对开发者的视觉差异和合并工具。MELD帮助您比较文件、目录和版本控制的项目。既可以查看差异有可以同步" \
+    FALSE             "TeamViewer"        "CS架构的远程工具" \
+    FALSE             "Deepin-Scrot"      "deepin-scrot是深度团队开发的一个截图工具，推荐" \
+    FALSE             "Albert Spotlight"  "Albert Spotlight是 Ubuntu的一项快速、随打即找、系统支援的桌面搜寻特色" \
+    FALSE             "Guake Terminal"    "Guake是一个下拉式的gnome桌面环境下的终端程序，因此你只需要按一个键就可以调用他，然后再按一次以便隐藏他.一句话：GuakeTerminal是linux下完美帅气的终端。非常推荐" \
+    FALSE             "bleachbit"         "bleachbit是系统ubuntu系统减肥的一门"中药"，用于清理系统没用的垃圾文件" \
+    FALSE             "psensor"           "psensor是监控系统硬件实时状况的一款软件" \
+    FALSE             "catfish"           "catfish简称文件搜索神器。" \
+    FALSE             "docky"             "dockey是一款一个号称花钱也买不到的菜单启动器。为什么这麽说的？很简单：它是开源的，很简洁更美观" \
+    FALSE             "Indicator Netspeed" "indicator-sysmonitor是一个系统动态信息监控工具。可以实时查看电脑的cpu，内存占用率，更可以查看网速，非常方便" \
+    FALSE             "TLP"               "TLP 是一款Linux流行的电源工具软件。你可以使用TLP来调整系统电池，有助于有更好延长电池寿命" \
+    FALSE             "menulibre"         "menulibre是一个简洁易用的菜单编辑器" \
+    FALSE             "Jetbrains全家桶"    "Jetbrains_IDEA 全家桶基基于java语言开的一个工具套餐，而且基本覆盖了主流的开发编程语言，还包含了开发ios/macOS的工具" \
+    FALSE             "Brackets"          "Brackets是一款使用 HTML，CSS，JavaScript 创建的开源的针对 Web 开发的编辑器" \
+    FALSE             "Sublime Text"      "Sublime Text是一个轻量、简洁、高效、跨平台的编辑器" \
+    FALSE             "Atom"              "Atom是GitHub推出的一款基于Web技术开发的桌面端的编辑器，其主要的特点是现代, 易用, 可定制" \
+    FALSE             "sqliteman"         "sqliteman是一款小巧的图形化管理SQLite数据库的软件。轻量级、小巧、功能全面。为它点个赞，推荐" \
+    FALSE             "Git、GitG"         "Git是一个开源的分布式版本控制系统，gitg是一个用于查看Git版本控制系统的工具，基于Gnome桌面环境" \
+    FALSE             "monodevelop"       "MonoDevelop 是个适用于Linux、Mac和Windows的开放源代码集成开发环境，目前支持的语言有Python、Vala、C#、Java、BOO、Nemerle、Visual Basic .NET、CIL、C与C++" \
+    FALSE             "MySQL workbench"   "MySQL workbench是一款专为MySQL设计的ER/数据库建模工具,但是在ElementaryOS还是存在不少的问题的" \
+    FALSE             "genymotion"        "Genymotion是一套完整的工具，它提供了Android虚拟环境，支持Windows、Linux和Mac OS等操作系统，容易安装和使用，开发安卓绝配" \
+    FALSE             "asm"               "Android Screen Monitor简称ASM，是一款监视手机或者模拟器屏幕的工具" \
+    FALSE             "enca、iconv"       "enca、iconv都是文件编码转换工具" \
+    FALSE             "Figlet"            "Figlet是一个将字符串在终端生成一个logo的终端工具" \
+    FALSE             "oh-my-zsh"         "oh-my-zsh是终极Shell，就这么一句话" \
+    FALSE             "Asciinema"         "Asciinema 是一个用 ClojureScript 编写的开源命令行录屏工具" \
+    FALSE             "Aria2"             "aria2是 Linux 下一个命令行下轻量级、多协议、多来源的高速下载工具" \
+    FALSE             "Proxychains4"      "Proxychains4是一个终端挂代理的工具，可自由切换代理。使用简单只需要在命令前加上proxychains4即可" \
+    TRUE              "清理修复软件"        "清理无用的软件安装包以及依赖，修复不能运行的软件"  \
     --separator="|");
 
   if [[ $GUI ]]
@@ -178,6 +221,16 @@ function main(){
     showDoingTask "Steam" && sudo apt-get install steam -y && showResultTip "Steam"
     fi
 
+    # 安装微信electronic-wechat
+    if [[ $GUI == *"electronic-wechat"* ]]
+    then
+    showDoingTask "electronic-wechat" && \
+    git clone https://github.com/geeeeeeeeek/electronic-wechat.git && \
+    cd electronic-wechat && \
+    npm install && sudo npm start && \
+    showResultTip "electronic-wechat"
+    fi
+
     # 安装Transmission
     if [[ $GUI == *"Transmission"* ]]
     then
@@ -209,6 +262,29 @@ function main(){
     && sudo add-apt-repository 'deb https://typora.io linux/' && sudo apt-get update >/dev/null>&1 \
     && sudo apt-get install typora -y  && showResultTip "Typora"
     fi
+
+    # 安装OBS Studio
+    if [[ $GUI == *"OBS Studio"* ]]
+    then
+    showDoingTask "OBS Studio"
+    sudo apt-get install ffmpeg -y
+    sudo add-apt-repository ppa:obsproject/obs-studio -y
+    sudo apt-get update && sudo apt-get install obs-studio -y
+    sudo add-apt-repository ppa:obsproject/obs-studio -ry
+    showResultTip "OBS Studio"
+    fi 
+
+    # 安装Remmina
+    if [[ $GUI == *"Remmina"* ]]
+    then
+    showDoingTask "Remmina" && sudo apt-get install remmina -y && showResultTip "Remmina"
+    fi 
+
+    # 安装Meld
+    if [[ $GUI == *"Meld"* ]]
+    then
+    showDoingTask "Meld" && sudo apt-get install meld -y && showResultTip "Meld"
+    fi 
 
     # 安装TeamViewer
     if [[ $GUI == *"TeamViewer"* ]]
@@ -393,6 +469,7 @@ function main(){
     showDoingTask "Proxychains4" && git clone https://github.com/rofl0r/proxychains-ng.git && \
     cd proxychains-ng && sudo ./configure –prefix=/usr –sysconfdir=/etc && sudo make && sudo make install && \
     sudo make install-config && cd .. && rm -rf proxychains-ng && showResultTip "Aria2"
+    fi
 
     # 清理修复软件
     if [[ $GUI == *"清理修复软件"* ]]
