@@ -5,4 +5,4 @@
 
 wget https://raw.githubusercontent.com/alicfeng/Linux_env/master/shell/os/install/install.sh && \
 wget https://raw.githubusercontent.com/alicfeng/Linux_env/master/shell/os/install/open_alicfeng_github.py && \
-bash install.sh
+bash install.sh && rm open_alicfeng_github.py install.sh helper.sh 
