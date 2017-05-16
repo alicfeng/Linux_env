@@ -492,7 +492,7 @@ showDoingTask(){
 
 # 显示安装结果
 showResultTip(){
-  notify-send -t 10000 -i utilities-terminal "AShellTools快速配置工具" "$USER☺$1完成"
+  notify-send -t 0 -i utilities-terminal "AShellTools快速配置工具" "$USER☺$1完成"
 }
 
 
