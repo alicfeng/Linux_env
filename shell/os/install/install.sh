@@ -72,6 +72,7 @@ function main(){
 
   if [[ $GUI ]]
   then
+  notify-send -t 0 "价值源于技术，技术源于分享" "给AlicFeng的Linux_env一个start呗" -i face-smile-big
     # 更新系统操作
     if [[ $GUI == *"更新系统源列表"* ]]
     then
@@ -491,7 +492,7 @@ showDoingTask(){
 
 # 显示安装结果
 showResultTip(){
-  notify-send -i utilities-terminal "AShellTools快速配置工具" "$USER☺$1完成"
+  notify-send -t 10000 -i utilities-terminal "AShellTools快速配置工具" "$USER☺$1完成"
 }
 
 
