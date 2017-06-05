@@ -4,7 +4,7 @@
 # * * * * * bash /home/alic/tutorial/Github/Linux_env/shell/os/monitor/temcheck.sh run
 
 # 配置警告时的温度
-warningTem=80
+warningTem=90
 
 # 安装 func
 function i(){
