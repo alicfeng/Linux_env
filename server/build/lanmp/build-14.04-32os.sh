@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 # AlicFeng https://www.samego.com alic@samego.com 价值源于技术，技术源于分享
 # build date 2017.06.11
 # last modified date 2017.06.11
