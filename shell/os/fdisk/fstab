@@ -3,3 +3,5 @@
 /dev/sda5 /media/alic/alicfeng ext4
 # nfts
 /dev/sda1 /media/alic/vm ntfs-3g default 0 0
+#asus
+/dev/sdb1 /media/alic/asus ntfs-3g default 0 0
