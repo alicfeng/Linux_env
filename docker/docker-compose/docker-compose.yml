@@ -1,0 +1,114 @@
+version: '2'
+services:
+  sise: #sise.samego.com
+    container_name: sise
+    image: abiosoft/caddy:php
+    volumes:
+      - /home/alic/www/caddy/:/srv/ #srv
+      - /media/alic/asus/Linux/software/:/srv/source/Linux/software #linux-software
+      - /media/alic/asus/Mac/software/:/srv/source/Mac/software #mac-software
+      - /media/alic/asus/Linux/iso/:/srv/source/Linux/iso #os-ios
+      - /media/alic/asus/Linux/games/:/srv/source/Linux/games #games
+      - /media/alic/asus/Video/:/srv/source/Video #videos
+      - /media/alic/asus/Windows/:/srv/source/Windows #winsows-all
+      - /media/alic/asus/mobile/:/srv/source/mobile #mobile
+      - /home/alic/文档/作业区域/:/srv/source/Others/作业区域 #作业
+    ports:
+      - 2015:2015
+    restart: always
+
+  gogs: #git.samego.com
+    container_name: gogs
+    image: gogs/gogs:latest
+    volumes:
+      #- /media/alic/asus/data/docker/gogs-data/:/data/
+      - /home/alic/www/gogs/:/data/
+    ports:
+      - 3000:3000
+    restart: always
+
+
+  # web server[lnmp]
+  nginx:
+    container_name: nginx
+    image: nginx:alpine
+    ports:
+      - 80:80
+      - 8080:8080
+      - 8015:8015
+      - 8019:8019
+      - 8034:8034
+      - 6006:6006
+      - 6868:6868
+      - 6969:6969
+      - 10015:10015
+      - 443:443
+    volumes:
+      # www
+      - /home/alic/www/:/www/
+      # - /home/alic/WorkSpace/PHP/PHP/basicThinkPHP5/:/www/basicThinkPHP5/
+      # - /home/alic/WorkSpace/PHP/HTML/Class/html/:/www/html/
+      # config
+      - /home/alic/tutorial/github/alicfeng/Linux_env/docker/lnmp/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /home/alic/tutorial/github/alicfeng/Linux_env/docker/lnmp/nginx/conf.d/:/etc/nginx/conf.d/:ro
+      # certificates
+      - /home/alic/tutorial/github/alicfeng/Linux_env/docker/lnmp/nginx/letsencrypt/live/:/etc/letsencrypt/live/:ro
+    links:
+      - fpm:__DOCKER_PHP_FPM__
+    restart: always
+
+
+  # php-fpm
+  fpm:
+    container_name: php
+    image: php:7.0-fpm
+    ports:
+      - 9000:9000
+    volumes:
+      - /home/alic/www/:/www/
+      # - /home/alic/WorkSpace/PHP/PHP/basicThinkPHP5/:/www/basicThinkPHP5/
+      # - /home/alic/WorkSpace/PHP/HTML/Class/html/:/www/html/
+      # Your php.ini
+      # - /home/alic/tutorial/Github/Alic_env/docker/lnmp/php-fpm/php.ini-production:/usr/local/etc/php/php.ini:ro
+    # environment:
+      # Set your APP env variables here:
+      # - APP_KEY=
+      # - DB_HOST=
+      # - DB_DATABASE=
+      # - DB_USERNAME=
+      # - DB_PASSWORD=
+    links:
+      - mysql:mysql
+    restart: always
+
+
+  # database 注意3306已改
+  mysql:
+    container_name: mysql
+    image: mysql:5.6
+    ports:
+      - 3306:3306
+    volumes:
+      - /media/alic/asus/data/docker/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: fenglican
+      MYSQL_USER: alic
+      MYSQL_PASSWORD: fenglican
+      MYSQL_DATABASE: docker
+    restart: always
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

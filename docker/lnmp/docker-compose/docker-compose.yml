@@ -1,0 +1,61 @@
+version: '2'
+services:
+  # web server
+  nginx:
+    container_name: nginx
+    image: reg.zuolan.me/library/nginx:alpine
+    ports:
+      - 80:80
+      #- 443:443
+    volumes:
+      # www
+      - /home/alic/www/default/:/usr/share/nginx/html/
+      - /home/alic/www/:/www/
+      # config
+      - /home/alic/tutorial/Github/Alic_env/docker/lnmp/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /home/alic/tutorial/Github/Alic_env/docker/lnmp/nginx/conf.d/:/etc/nginx/conf.d/:ro
+      # certificates
+      # - ./server.crt/:/etc/nginx/server.crt:ro
+      # - ./server.key/:/etc/nginx/server.key:ro
+    links:
+      - fpm:__DOCKER_PHP_FPM__
+
+  # php-fpm
+  fpm:
+    container_name: php
+    image: reg.zuolan.me/library/php:7.0-fpm
+    ports:
+      - 9000:9000
+    volumes:
+      - /home/alic/www/default/:/usr/share/nginx/html/
+      - /home/alic/www/:/www/
+      # Your php.ini
+      - /home/alic/tutorial/Github/Alic_env/docker/lnmp/php-fpm/php.ini-production:/usr/local/etc/php/php.ini:ro
+    # environment:
+      # Set your APP env variables here:
+      # - APP_KEY=
+      # - DB_HOST=
+      # - DB_DATABASE=
+      # - DB_USERNAME=
+      # - DB_PASSWORD=
+    links:
+      - mysql:mysql
+
+  # database
+  mysql:
+    container_name: mysql
+    image: reg.zuolan.me/library/mysql:5.6
+    ports:
+      - 3306:3306
+    volumes:
+      - /media/alic/asus/data/docker/mysql:/var/lib/mysql
+      - /home/alic/tutorial/Github/Alic_env/docker/lnmp/mysql/my.cnf:/etc/mysql/my.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: fenglican
+      MYSQL_USER: alic
+      MYSQL_PASSWORD: fenglican
+      MYSQL_DATABASE: docker
+
+
+
+
