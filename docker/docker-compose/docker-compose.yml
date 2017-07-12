@@ -89,7 +89,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - /media/alic/asus/data/docker/mysql:/var/lib/mysql
+      - /home/alic/data/docker/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: fenglican
       MYSQL_USER: alic
