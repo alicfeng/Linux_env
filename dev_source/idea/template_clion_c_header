@@ -1,0 +1,12 @@
+#if ($HEADER_COMMENTS)
+/**
+ * Created by ${USER}(AlicFeng) on ${DATE} from ${PRODUCT_NAME}.
+ * Email is alic@samego.com
+ */
+#if ($ORGANIZATION_NAME && $ORGANIZATION_NAME != "")
+// Copyright (c) $YEAR ${ORGANIZATION_NAME}#if (!$ORGANIZATION_NAME.endsWith(".")).#end All rights reserved.
+#end
+//
+#end
+
+
