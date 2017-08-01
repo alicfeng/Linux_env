@@ -10,6 +10,8 @@ sudo apt-get install mysql-server mysql-client -y
 sudo apt-get install nginx -y 
 
 #安装PHP7
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get update
 sudo apt-get -y install php7.0-fpm php7.0 -y
 
 ##################################################
