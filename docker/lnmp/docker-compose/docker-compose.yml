@@ -6,6 +6,7 @@ services:
     image: reg.zuolan.me/library/nginx:alpine
     ports:
       - 80:80
+      - 6969:6969
       #- 443:443
     volumes:
       # www

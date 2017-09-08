@@ -42,6 +42,7 @@ services:
       - 6868:6868
       - 6969:6969
       - 10015:10015
+      - 8893:8893
       - 443:443
     volumes:
       # www
@@ -96,6 +97,39 @@ services:
       MYSQL_PASSWORD: fenglican
       MYSQL_DATABASE: docker
     restart: always
+
+  # samego-job-db-master
+  mysql-master:
+    container_name: mysql-master
+    image: mysql:5.6
+    ports:
+      - 3308:3306
+    volumes:
+      - /home/alic/data/docker/mysql-master:/var/lib/mysql
+      - /home/alic/tutorial/github/alicfeng/Linux_env/docker/lnmp/mysql-ms/master/my.cnf:/etc/mysql/my.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: samego
+      MYSQL_USER: samego
+      MYSQL_PASSWORD: samego
+      MYSQL_DATABASE: samego-job
+    restart: always
+
+  # samego-job-db-slaver
+  mysql-slaver:
+    container_name: mysql-slaver
+    image: mysql:5.6
+    ports:
+      - 3309:3306
+    volumes:
+      - /home/alic/data/docker/mysql-slaver:/var/lib/mysql
+      - /home/alic/tutorial/github/alicfeng/Linux_env/docker/lnmp/mysql-ms/slaver/my.cnf:/etc/mysql/my.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: samego
+      MYSQL_USER: samego
+      MYSQL_PASSWORD: samego
+      MYSQL_DATABASE: samego-job
+    restart: always
+
 
 
 
