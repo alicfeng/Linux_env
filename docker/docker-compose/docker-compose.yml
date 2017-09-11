@@ -43,6 +43,7 @@ services:
       - 6969:6969
       - 10015:10015
       - 8893:8893
+      - 9009:9009
       - 443:443
     volumes:
       # www
@@ -129,8 +130,36 @@ services:
       MYSQL_PASSWORD: samego
       MYSQL_DATABASE: samego-job
     restart: always
+  
+  # apache-php-svr1
+  apache-php-svr1:
+    container_name: apache-php-svr1
+    image: eboraas/apache-php:latest
+    ports:
+      - 9001:80
+    volumes:
+      - /home/alic/tutorial/coding/alic/samego-job-admin:/var/www/html
+    restart: always
 
+  # apache-php-svr2
+  apache-php-svr2:
+    container_name: apache-php-svr2
+    image: eboraas/apache-php:latest
+    ports:
+      - 9002:80
+    volumes:
+      - /home/alic/tutorial/coding/alic/samego-job-admin:/var/www/html
+    restart: always
 
+  # apache-php-svr3
+  apache-php-svr3:
+    container_name: apache-php-svr3
+    image: eboraas/apache-php:latest
+    ports:
+      - 9003:80
+    volumes:
+      - /home/alic/tutorial/coding/alic/samego-job-admin:/var/www/html
+    restart: always
 
 
 
