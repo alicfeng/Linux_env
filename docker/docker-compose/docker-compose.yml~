@@ -131,7 +131,7 @@ services:
       MYSQL_DATABASE: samego-job
     restart: always
   
-  # 负载均衡服务器1
+  # apache-php-svr1
   apache-php-svr1:
     container_name: apache-php-svr1
     image: eboraas/apache-php:latest
@@ -141,7 +141,7 @@ services:
       - /home/alic/tutorial/coding/alic/samego-job-admin:/var/www/html
     restart: always
 
-  # 负载均衡服务器2
+  # apache-php-svr2
   apache-php-svr2:
     container_name: apache-php-svr2
     image: eboraas/apache-php:latest
@@ -151,7 +151,7 @@ services:
       - /home/alic/tutorial/coding/alic/samego-job-admin:/var/www/html
     restart: always
 
-  # 负载均衡服务器3
+  # apache-php-svr3
   apache-php-svr3:
     container_name: apache-php-svr3
     image: eboraas/apache-php:latest
@@ -161,25 +161,6 @@ services:
       - /home/alic/tutorial/coding/alic/samego-job-admin:/var/www/html
     restart: always
 
-  # 文件存储服务器
-  service_file:
-    container_name: service_file
-    image: eboraas/apache-php:latest
-    ports:
-      - 9004:80
-    volumes:
-      - /home/alic/tutorial/coding/alic/samego-job-admin:/var/www/html
-    restart: always
-
-  # 管理端服务器
-  service_manager:
-    container_name: service_manager
-    image: eboraas/apache-php:latest
-    ports:
-      - 9005:80
-    volumes:
-      - /home/alic/tutorial/coding/alic/samego-job-admin:/var/www/html
-    restart: always
 
 
 
